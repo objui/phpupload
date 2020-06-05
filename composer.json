@@ -1,0 +1,21 @@
+{
+    "name": "objui/phpupload",
+    "description": "",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "objui",
+            "email": "objui@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0",
+        "qiniu/php-sdk": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "objui\\phpupload\\": "src/"
+        }
+    }
+}
