@@ -40,8 +40,8 @@ class Qiniu implements IUpload
 
     public function __construct(array $config = [])
     {
-        $this->accessKey = $config['accesskey'] ?? '';
-        $this->secreKey = $config['secrekey'] ?? '';
+        $this->accessKey = $config['accesskey'] ? $config['accesskey']: '';
+        $this->secreKey = $config['secrekey'] ? $config['secrekey']: '';
         unset($config['accesskey']);
         unset($config['secrekey']);
         $this->config = array_merge($this->config, $config);

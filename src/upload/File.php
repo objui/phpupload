@@ -38,7 +38,7 @@ class File implements IUpload
     public function __construct(array $config = [])
     {
         $this->config = array_merge($this->config, array_change_key_case($config));        
-        $this->save_path = $this->config['save_path'] ?? dirname(dirname(__DIR__)) . '/test/upload/';
+        $this->save_path = $this->config['save_path'] ? $this->config['save_path'] : dirname(dirname(__DIR__)) . '/test/upload/';
         $this->save_name = date('YmdHis') . uniqid();
     }
 

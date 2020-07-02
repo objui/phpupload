@@ -21,7 +21,7 @@ class Upload
     {
         if(empty(self::$obj)){
         
-            $type = $this->config['type'] ?? 'file';
+            $type = $this->config['type'] ? $this->config['type']: 'file';
             switch($type){
                 case 'qiniu':
                     self::$obj = new \objui\phpupload\upload\Qiniu($this->config);
