@@ -38,6 +38,7 @@ final class FormUploader
         } else {
             $fields['key'] = $key;
         }
+
         //enable crc32 check by default
         $fields['crc32'] = \Qiniu\crc32_data($data);
 
@@ -46,11 +47,14 @@ final class FormUploader
                 $fields[$k] = $v;
             }
         }
+
         list($accessKey, $bucket, $err) = \Qiniu\explodeUpToken($upToken);
         if ($err != null) {
             return array(null, $err);
         }
+
         $upHost = $config->getUpHost($accessKey, $bucket);
+
         $response = Client::multipartPost($upHost, $fields, 'file', $fname, $data, $mime);
         if (!$response->ok()) {
             return array(null, new Error($upHost, $response));
