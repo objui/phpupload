@@ -68,7 +68,7 @@ class Qiniu implements IUpload
                 $this->name = $this->uploadfile['name'];
                 $this->size = $this->uploadfile['size'];
                 $this->ext = strtolower(substr(strrchr($this->name, "."), 1));
-                $this->save_name = $this->config['prefix'] . '/' . date('YmdHis') . '/' . uniqid() . '.' . $this->ext;
+                $this->save_name = $this->config['prefix'] . '/' . date('Ymd') . '/' . uniqid() . '.' . $this->ext;
                 if(!in_array($this->ext, $this->ext_type[$this->config['ext_type']])) {                                                                                                            
                     return '非法上传';          
                 }              
