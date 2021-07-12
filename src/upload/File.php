@@ -67,7 +67,15 @@ class File implements IUpload
                 if (!file_exists($this->save_path) && !mkdir($this->save_path, 0777, true)) {
                     return '目录不存在或权限不足';
                 }
-                return move_uploaded_file($this->tmp_name, $this->save_path . $this->save_name); 
+                $upstatus =  move_uploaded_file($this->tmp_name, $this->save_path . $this->save_name); 
+                if($upstatus == true){
+                    return [
+                        'key' => ltrim($this->save_path . $this->save_name, "."),
+                        'hash'=> uniqid()
+                    ];
+                }else{
+                    return '上传失败';
+                } 
                 break;
             case 1:
                 return '文件超过系统限定大小';
